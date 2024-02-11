@@ -1,0 +1,397 @@
+[
+  {
+    "id": 1,
+    "slug": "acura",
+    "make": "Acura"
+  },
+  {
+    "id": 2,
+    "slug": "alfa-romeo",
+    "make": "Alfa Romeo"
+  },
+  {
+    "id": 3,
+    "slug": "aptera",
+    "make": "Aptera"
+  },
+  {
+    "id": 4,
+    "slug": "aston-martin",
+    "make": "Aston Martin"
+  },
+  {
+    "id": 5,
+    "slug": "audi",
+    "make": "Audi"
+  },
+  {
+    "id": 6,
+    "slug": "austin",
+    "make": "Austin"
+  },
+  {
+    "id": 7,
+    "slug": "bentley",
+    "make": "Bentley"
+  },
+  {
+    "id": 8,
+    "slug": "bmw",
+    "make": "BMW"
+  },
+  {
+    "id": 9,
+    "slug": "bugatti",
+    "make": "Bugatti"
+  },
+  {
+    "id": 10,
+    "slug": "buick",
+    "make": "Buick"
+  },
+  {
+    "id": 11,
+    "slug": "cadillac",
+    "make": "Cadillac"
+  },
+  {
+    "id": 12,
+    "slug": "chevrolet",
+    "make": "Chevrolet"
+  },
+  {
+    "id": 13,
+    "slug": "chrysler",
+    "make": "Chrysler"
+  },
+  {
+    "id": 14,
+    "slug": "citroen",
+    "make": "Citroën"
+  },
+  {
+    "id": 15,
+    "slug": "corbin",
+    "make": "Corbin"
+  },
+  {
+    "id": 16,
+    "slug": "daewoo",
+    "make": "Daewoo"
+  },
+  {
+    "id": 17,
+    "slug": "daihatsu",
+    "make": "Daihatsu"
+  },
+  {
+    "id": 18,
+    "slug": "dodge",
+    "make": "Dodge"
+  },
+  {
+    "id": 19,
+    "slug": "eagle",
+    "make": "Eagle"
+  },
+  {
+    "id": 20,
+    "slug": "fairthorpe",
+    "make": "Fairthorpe"
+  },
+  {
+    "id": 21,
+    "slug": "ferrari",
+    "make": "Ferrari"
+  },
+  {
+    "id": 22,
+    "slug": "fiat",
+    "make": "FIAT"
+  },
+  {
+    "id": 23,
+    "slug": "fillmore",
+    "make": "Fillmore"
+  },
+  {
+    "id": 24,
+    "slug": "foose",
+    "make": "Foose"
+  },
+  {
+    "id": 25,
+    "slug": "ford",
+    "make": "Ford"
+  },
+  {
+    "id": 26,
+    "slug": "geo",
+    "make": "Geo"
+  },
+  {
+    "id": 27,
+    "slug": "gmc",
+    "make": "GMC"
+  },
+  {
+    "id": 28,
+    "slug": "hillman",
+    "make": "Hillman"
+  },
+  {
+    "id": 29,
+    "slug": "holden",
+    "make": "Holden"
+  },
+  {
+    "id": 30,
+    "slug": "honda",
+    "make": "Honda"
+  },
+  {
+    "id": 31,
+    "slug": "hummer",
+    "make": "HUMMER"
+  },
+  {
+    "id": 32,
+    "slug": "hyundai",
+    "make": "Hyundai"
+  },
+  {
+    "id": 33,
+    "slug": "infiniti",
+    "make": "Infiniti"
+  },
+  {
+    "id": 34,
+    "slug": "isuzu",
+    "make": "Isuzu"
+  },
+  {
+    "id": 35,
+    "slug": "jaguar",
+    "make": "Jaguar"
+  },
+  {
+    "id": 36,
+    "slug": "jeep",
+    "make": "Jeep"
+  },
+  {
+    "id": 37,
+    "slug": "jensen",
+    "make": "Jensen"
+  },
+  {
+    "id": 38,
+    "slug": "kia",
+    "make": "Kia"
+  },
+  {
+    "id": 39,
+    "slug": "lamborghini",
+    "make": "Lamborghini"
+  },
+  {
+    "id": 40,
+    "slug": "land-rover",
+    "make": "Land Rover"
+  },
+  {
+    "id": 41,
+    "slug": "lexus",
+    "make": "Lexus"
+  },
+  {
+    "id": 42,
+    "slug": "lincoln",
+    "make": "Lincoln"
+  },
+  {
+    "id": 43,
+    "slug": "lotus",
+    "make": "Lotus"
+  },
+  {
+    "id": 44,
+    "slug": "maserati",
+    "make": "Maserati"
+  },
+  {
+    "id": 45,
+    "slug": "maybach",
+    "make": "Maybach"
+  },
+  {
+    "id": 46,
+    "slug": "mazda",
+    "make": "Mazda"
+  },
+  {
+    "id": 47,
+    "slug": "mclaren",
+    "make": "McLaren"
+  },
+  {
+    "id": 48,
+    "slug": "mercedes-benz",
+    "make": "Mercedes-Benz"
+  },
+  {
+    "id": 49,
+    "slug": "mercury",
+    "make": "Mercury"
+  },
+  {
+    "id": 50,
+    "slug": "merkur",
+    "make": "Merkur"
+  },
+  {
+    "id": 51,
+    "slug": "mg",
+    "make": "MG"
+  },
+  {
+    "id": 52,
+    "slug": "mini",
+    "make": "MINI"
+  },
+  {
+    "id": 53,
+    "slug": "mitsubishi",
+    "make": "Mitsubishi"
+  },
+  {
+    "id": 54,
+    "slug": "morgan",
+    "make": "Morgan"
+  },
+  {
+    "id": 55,
+    "slug": "nissan",
+    "make": "Nissan"
+  },
+  {
+    "id": 56,
+    "slug": "oldsmobile",
+    "make": "Oldsmobile"
+  },
+  {
+    "id": 57,
+    "slug": "panoz",
+    "make": "Panoz"
+  },
+  {
+    "id": 58,
+    "slug": "peugeot",
+    "make": "Peugeot"
+  },
+  {
+    "id": 59,
+    "slug": "plymouth",
+    "make": "Plymouth"
+  },
+  {
+    "id": 60,
+    "slug": "pontiac",
+    "make": "Pontiac"
+  },
+  {
+    "id": 61,
+    "slug": "porsche",
+    "make": "Porsche"
+  },
+  {
+    "id": 62,
+    "slug": "ram",
+    "make": "Ram"
+  },
+  {
+    "id": 63,
+    "slug": "rambler",
+    "make": "Rambler"
+  },
+  {
+    "id": 64,
+    "slug": "renault",
+    "make": "Renault"
+  },
+  {
+    "id": 65,
+    "slug": "rolls-royce",
+    "make": "Rolls-Royce"
+  },
+  {
+    "id": 66,
+    "slug": "saab",
+    "make": "Saab"
+  },
+  {
+    "id": 67,
+    "slug": "saturn",
+    "make": "Saturn"
+  },
+  {
+    "id": 68,
+    "slug": "scion",
+    "make": "Scion"
+  },
+  {
+    "id": 69,
+    "slug": "shelby",
+    "make": "Shelby"
+  },
+  {
+    "id": 70,
+    "slug": "smart",
+    "make": "Smart"
+  },
+  {
+    "id": 71,
+    "slug": "spyker",
+    "make": "Spyker"
+  },
+  {
+    "id": 72,
+    "slug": "spyker-cars",
+    "make": "Spyker Cars"
+  },
+  {
+    "id": 73,
+    "slug": "studebaker",
+    "make": "Studebaker"
+  },
+  {
+    "id": 74,
+    "slug": "subaru",
+    "make": "Subaru"
+  },
+  {
+    "id": 75,
+    "slug": "suzuki",
+    "make": "Suzuki"
+  },
+  {
+    "id": 76,
+    "slug": "tesla",
+    "make": "Tesla"
+  },
+  {
+    "id": 77,
+    "slug": "toyota",
+    "make": "Toyota"
+  },
+  {
+    "id": 78,
+    "slug": "volkswagen",
+    "make": "Volkswagen"
+  },
+  {
+    "id": 79,
+    "slug": "volvo",
+    "make": "Volvo"
+  }
+]

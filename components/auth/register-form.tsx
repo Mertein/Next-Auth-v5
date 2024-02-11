@@ -13,9 +13,9 @@ import {
   FormMessage,  
 } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { LoginSchema } from "@/schemas";
+import { RegisterSchema } from "@/schemas";
 import { useState, useTransition } from "react";
-import { login } from "@/actions/login";
+import { register } from "@/actions/register";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -23,7 +23,7 @@ import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>('');
   const [success, setSucess] = useState<string | undefined>('');
   const [isPending, startTransition] = useTransition();
@@ -33,30 +33,30 @@ export const LoginForm = () => {
   const urlError = searchParams.get('error') === "OAuthAccountNotLinked" ? 
   "La cuenta de correo ya esta registrada con otro proveedor de autenticacion" : "";
 
-  const form = useForm<z.infer<typeof LoginSchema>>({
-    resolver: zodResolver(LoginSchema),
+  const form = useForm<z.infer<typeof RegisterSchema>>({
+    resolver: zodResolver(RegisterSchema),
     defaultValues: {
       email: '',
       password: '',
+      name: '',
     },
   });
 
-  const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+  const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     setError('');
     setSucess('');
 
     startTransition(() => {
-      login(values, callbackUrl)
+      register(values, callbackUrl)
       .then((data) => {
         if(data?.error) {
           form.reset();
           setError(data.error);
         }
-        //TODO: Add when we add 2FA;
-        // if(data?.success) {
-        //   form.reset();
-        //   setSucess(data.success);
-        // }
+        if(data?.success) {
+          form.reset();
+          setSucess(data.success);
+        }
 
       })
       .catch(() => setError('Algo salio mal'));
@@ -66,13 +66,27 @@ export const LoginForm = () => {
   return (
       <CardWrapper 
         headerLabel="Bienvenido de vuelta"
-        backButtonLabel="No tienes una cuenta?"
-        backButtonHref="/auth/register"
+        backButtonLabel="Ya tienes una cuenta?"
+        backButtonHref="/auth/login"
         showSocial
       >
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="space-y-4">
+
+          <FormField 
+              control={form.control}
+              name='name'
+              render={({field}) => (
+                <FormItem>
+                  <FormLabel htmlFor="name">Nombre</FormLabel>
+                  <FormControl>
+                    <Input {...field} disabled={isPending} placeholder="John Doe"/>
+                  </FormControl>
+                  <FormMessage/>
+                </FormItem>
+              )}
+            />
 
             {/* Email */}
             <FormField 
@@ -99,11 +113,6 @@ export const LoginForm = () => {
                   <FormControl>
                     <Input {...field} disabled={isPending} placeholder="******" type='password'/>
                   </FormControl>
-                  <Button size='sm' variant="link" asChild disabled={isPending} className="px-0 font-normal">
-                    <Link href='#'>
-                      Olvidaste tu contraseña?
-                    </Link>
-                  </Button>
                   <FormMessage/>
                 </FormItem>
               )} 
@@ -113,7 +122,7 @@ export const LoginForm = () => {
           <FormSuccess message={success} />
 
           <Button type='submit' disabled={isPending} className="w-full">
-            Iniciar Sesion
+            Registrarse
           </Button>
         </form>
       </Form>
