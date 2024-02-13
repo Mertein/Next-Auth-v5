@@ -4,12 +4,11 @@ import * as z from "zod";
 import bcrypt from "bcrypt";
 import {db} from "@/lib/db"
 import { getUserByEmail } from "@/data/user";
+import { generateVerificationToken } from "@/lib/tokens";
+import { sendVerificationEmail } from "@/lib/mail";
 
 export const register= async (values: z.infer<typeof RegisterSchema>, callbackUrl?: string | null,) => {
   const validateFields = RegisterSchema.safeParse(values);
-  console.log('Values', values);
-  console.log('ValidateFields', validateFields);
-
   if(!validateFields.success) {
     return {error: "Campos Invalidos!"};
   }
@@ -31,7 +30,13 @@ export const register= async (values: z.infer<typeof RegisterSchema>, callbackUr
     }
   })
 
-  console.log('Hashed Password', hashedPassword);
+  const verificationToken = await generateVerificationToken(email);
+  await sendVerificationEmail(email, verificationToken.token);
+
+  return {success: "Correo de verificación enviado!"};
+
+
+  
   return {success: "Usuario Registrado!"};
 
 }

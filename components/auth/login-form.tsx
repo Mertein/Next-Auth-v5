@@ -52,12 +52,10 @@ export const LoginForm = () => {
           form.reset();
           setError(data.error);
         }
-        //TODO: Add when we add 2FA;
-        // if(data?.success) {
-        //   form.reset();
-        //   setSucess(data.success);
-        // }
-
+        if(data?.success) {
+          form.reset();
+          setSucess(data.success);
+        }
       })
       .catch(() => setError('Algo salio mal'));
     });

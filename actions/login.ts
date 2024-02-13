@@ -5,6 +5,8 @@ import * as z from "zod";
 import { signIn } from "@/auth";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 import { AuthError } from "next-auth";
+import { getUserByEmail } from "@/data/user";
+import { generateVerificationToken } from "@/lib/tokens";
 
 export const login = async (values: z.infer<typeof LoginSchema>, callbackUrl?: string | null,) => {
   const validateFields = LoginSchema.safeParse(values);
@@ -14,6 +16,18 @@ export const login = async (values: z.infer<typeof LoginSchema>, callbackUrl?: s
   }
 
   const {email, password} = validateFields.data;
+
+  const existingUser = await getUserByEmail(email);
+  
+  if(!existingUser || !existingUser.email || !existingUser.password) {
+    return {error: "Credenciais Invalidas!"};
+  }
+
+  if(!existingUser.emailVerified) {
+    const verificationToken = await generateVerificationToken(email);
+    return {success: 'Email de verificación enviado!'}
+  }
+  
 
   try {
     await signIn("credentials", {
