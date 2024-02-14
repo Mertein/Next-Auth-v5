@@ -4,7 +4,9 @@ import { CardWrapper } from "./card-wrapper";
 import {BeatLoader}  from 'react-spinners';
 import {useState, useCallback, useEffect} from 'react';
 import { useSearchParams } from 'next/navigation';
-import { getVerificationTokenByToken } from "@/data/verification-token";
+import { newVerification } from "@/actions/new-verification";
+import { FormError } from "@/components/form-error";
+import { FormSuccess } from "@/components/form-success";
 
 const NewVerificationForm = () => {
   const [error, setError] = useState<string | undefined>('');
@@ -13,12 +15,18 @@ const NewVerificationForm = () => {
   const token = searchParams.get('token');
 
   const onSubmit = useCallback(() => {
-    console.log(token)
-    // if(!token) {
-    //   setError('No se ha encontrado el token de verificación');
-    //   return;
-    // }
-    // getVerificationTokenByToken(token);
+    if(!token) {
+      setError('No se ha encontrado el token de verificación');
+      return;
+    }
+    newVerification(token).
+      then((data) => {
+        setSucess(data.success);
+        setError(data.error);
+      })
+      .catch(() => {
+        setError('Algo salió mal');
+      })
 
   }, [token]);
 
@@ -33,13 +41,15 @@ const NewVerificationForm = () => {
   return ( 
     <CardWrapper
       headerLabel="Confirmando tu verificación"
-      backButtonHref="Volver a Iniciar Sesión"
-      backButtonLabel="/auth/login"
+      backButtonLabel="Volver a Iniciar Sesión"
+      backButtonHref="/auth/login"
     >
       <div className="flex items-center justify-center w-full">
         {!error && !success && (
           <BeatLoader/>
         )}
+        <FormError message={error} />
+        <FormSuccess message={success} />
        
 
       </div>
