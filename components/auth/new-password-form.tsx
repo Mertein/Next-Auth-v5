@@ -19,14 +19,15 @@ import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { newPassword } from "@/actions/new-password";
-
+import { useSearchParams } from "next/navigation";
 
 export const NewPasswordForm = () => {
   const [error, setError] = useState<string | undefined>('');
   const [success, setSucess] = useState<string | undefined>('');
   const [isPending, startTransition] = useTransition();
 
-  const useSearch = 
+  const useSearch = useSearchParams();
+  const token = useSearch.get('token');
 
   const form = useForm<z.infer<typeof NewPasswordSchema >>({
     resolver: zodResolver(NewPasswordSchema ),
@@ -41,7 +42,7 @@ export const NewPasswordForm = () => {
     setSucess('');
 
     startTransition(() => {
-      newPassword(values)
+      newPassword(values, token)
       .then((data) => {
         if(data?.error) {
           form.reset();
