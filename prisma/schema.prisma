@@ -53,3 +53,10 @@ model VerificationToken {
 
   @@unique([email, token])
 }
+
+model VerificationPassword {
+  id String @id @default(cuid())
+  emnail String
+  token String @unique
+  expires DateTime
+}
