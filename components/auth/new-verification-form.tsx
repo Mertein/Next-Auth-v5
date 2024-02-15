@@ -15,6 +15,8 @@ const NewVerificationForm = () => {
   const token = searchParams.get('token');
 
   const onSubmit = useCallback(() => {
+    if(success || error) return;
+
     if(!token) {
       setError('No se ha encontrado el token de verificación');
       return;
@@ -48,7 +50,9 @@ const NewVerificationForm = () => {
         {!error && !success && (
           <BeatLoader/>
         )}
+        {!success && (
         <FormError message={error} />
+        )}
         <FormSuccess message={success} />
        
 

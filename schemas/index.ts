@@ -7,15 +7,13 @@ export const NewPasswordSchema = z.object({
   confirmPassword: z.string().min(6, {
     message: 'Se requiere una contraseña de al menos 6 caracteres',
   }),
-}).superRefine(({confirmPassword, password}, ctx) => {
-  if(confirmPassword !== password) {
-    ctx.addIssue({
-      code: "custom",
-      message: "Las contraseñas no coinciden"
-    });
-  }
-
-})
+}).refine((values) => {
+  return values.password === values.confirmPassword
+},
+{
+  message: "Las contraseñas no coinciden",
+  path: ["confirmPassword"],
+});
 
 export const ResetSchema = z.object({
   email: z.string().email({

@@ -20,8 +20,6 @@ export const reset = async (values: z.infer<typeof ResetSchema>) => {
     return { error: 'Correo no encontrado' };
   }
 
-  // sendVerificationEmail(email, 'rwerefwefewfwegfweghweg');
-  //TODO: generate token & send emal
   const passwordResetToken = await generatePasswordResetToken(email);
   if(!passwordResetToken) {
     return {error: 'Algo salio mal'};

@@ -73,7 +73,7 @@ export const NewPasswordForm = () => {
               name='password'
               render={({field}) => (
                 <FormItem>
-                  <FormLabel htmlFor="email">Correo</FormLabel>
+                  <FormLabel htmlFor="email">Contraseña</FormLabel>
                   <FormControl>
                     <Input {...field} disabled={isPending} placeholder="******" type='password'/>
                   </FormControl>
@@ -99,7 +99,6 @@ export const NewPasswordForm = () => {
           </div>
           <FormError message={error} />
           <FormSuccess message={success} />
-
           <Button type='submit' disabled={isPending} className="w-full">
             Cambiar contraseña
           </Button>
