@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { useCurrentUser } from '@/hooks/use-current-user';
+import LogoutButton from './logout-button';
+import { ExitIcon } from '@radix-ui/react-icons';
 
 
 const UserButton = () => {
@@ -26,13 +28,16 @@ const UserButton = () => {
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent align='center' className='w-40'>
       <DropdownMenuItem>
           <DropdownMenuLabel>Configuración</DropdownMenuLabel>
         </DropdownMenuItem>
-        <DropdownMenuItem>
-          <DropdownMenuLabel>Cerrar Sesión</DropdownMenuLabel>
-        </DropdownMenuItem>
+        <LogoutButton>
+          <DropdownMenuItem>
+            <ExitIcon className='h-4 w-4 mr-2' />
+            <DropdownMenuLabel>Cerrar Sesión</DropdownMenuLabel>
+          </DropdownMenuItem>
+        </LogoutButton>
       </DropdownMenuContent>
     </DropdownMenu>
    );

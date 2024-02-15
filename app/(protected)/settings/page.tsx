@@ -6,7 +6,6 @@ const SettingsPage =  () => {
   const session = useSession();
   return ( 
     <div className="">
-        <Button  onClick={() => signOut()} type='submit' className="" variant="default" size="sm">LogOut </Button>
     </div>
 
    );

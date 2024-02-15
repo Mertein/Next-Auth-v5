@@ -12,9 +12,11 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { useCurrentUser } from "@/hooks/use-current-user";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const user = useCurrentUser();
+  const pathname = usePathname();
   return ( 
     <nav className="justify-around items-center flex bg-secondary p-4 shadow-sm w-full">
       <div className="flex gap-x-2">
@@ -27,13 +29,13 @@ const Navbar = () => {
           <DropdownMenuContent>
             <DropdownMenuItem>
               <DropdownMenuLabel>
-                 <Link href="/autos/solicitar">Solicitar</Link>
+                 <Link href="/autos/solicitar">Solicitar / Ver Autos</Link>
                </DropdownMenuLabel>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <DropdownMenuLabel>
-                <Link href="/autos/mis-solicitudes">Ver mis solicitudes</Link>
+                <Link href="/autos/mis-solicitudes">Mis Solicitudes</Link>
               </DropdownMenuLabel>
             </DropdownMenuItem>
             {user?.role === 'ADMIN' && (
@@ -54,14 +56,14 @@ const Navbar = () => {
             )}
           </DropdownMenuContent>
         </DropdownMenu>
-        <Button>
+        {/* <Button>
           Mis Solicitudes
         </Button>
         <Button>
           Ver Solicitudes
-        </Button>
-
+        </Button> */}
       </div>
+
       <div className="flex gap-x-2 ">
         <UserButton/>
       </div>
