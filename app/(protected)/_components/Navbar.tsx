@@ -18,56 +18,43 @@ const Navbar = () => {
   const user = useCurrentUser();
   const pathname = usePathname();
   return ( 
-    <nav className="justify-around items-center flex bg-secondary p-4 shadow-sm w-full">
+    <nav className="justify-between items-center flex bg-secondary p-4 shadow-sm w-[600px] rounded-xl">
       <div className="flex gap-x-2">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button>
-              Autos
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuItem>
-              <DropdownMenuLabel>
-                 <Link href="/autos/solicitar">Solicitar / Ver Autos</Link>
-               </DropdownMenuLabel>
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>
-              <DropdownMenuLabel>
-                <Link href="/autos/mis-solicitudes">Mis Solicitudes</Link>
-              </DropdownMenuLabel>
-            </DropdownMenuItem>
-            {user?.role === 'ADMIN' && (
-              <>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <DropdownMenuLabel>
-                  <Link href="/autos/ver-solicitudes">Solicitudes</Link>
-                </DropdownMenuLabel>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <DropdownMenuLabel>
-                  <Link href="/autos/administrar">Administrar</Link>
-                </DropdownMenuLabel>
-              </DropdownMenuItem>
-              </>
-            )}
-          </DropdownMenuContent>
-        </DropdownMenu>
-        {/* <Button>
-          Mis Solicitudes
+        <Button
+          asChild
+          variant={pathname === '/server' ? 'default' : 'outline'}
+        >
+          <Link href='/server'>
+            Server
+          </Link>
         </Button>
-        <Button>
-          Ver Solicitudes
-        </Button> */}
+        <Button
+          asChild
+          variant={pathname === '/client' ? 'default' : 'outline'}
+        >
+          <Link href='/client'>
+            Client
+          </Link>
+        </Button>
+        <Button
+          asChild
+          variant={pathname === '/admin' ? 'default' : 'outline'}
+        >
+          <Link href='/admin'>
+            Admin
+          </Link>
+        </Button>
+        <Button
+          asChild
+          variant={pathname === '/settings' ? 'default' : 'outline'}
+        >
+          <Link href='/settings'>
+            Settings
+          </Link>
+        </Button>
+      
       </div>
-
-      <div className="flex gap-x-2 ">
         <UserButton/>
-      </div>
-     
     </nav>
    );
 }

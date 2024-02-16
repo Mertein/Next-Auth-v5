@@ -1,4 +1,48 @@
+import { UserRole } from "@prisma/client";
 import * as z from "zod";
+
+
+export const SettingsSchema = z.object({
+  name: z.string().min(1, {
+    message: 'El nombre es requerido',
+  }),
+  email: z.string().email({
+    message: 'El correo es requerido',
+  }),
+  password: z.string().min(6, {
+    message: 'Se requiere una contraseña de al menos 6 caracteres',
+  }),
+  newPassword: z.string().min(6, {
+    message: 'Se requiere una contraseña de al menos 6 caracteres',
+  }),
+  role: z.optional(z.enum([UserRole.USER, UserRole.ADMIN])),
+})
+.refine((values) => {
+  
+  if(values.password && !values.newPassword ) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Se requiere una contraseña nueva",
+  path: ["newPassword"],
+})
+.refine((values) => {
+  if(values.newPassword && !values.password) {
+    return false;
+  }
+
+  return true;
+},{
+  message: "Se requiere la contraseña actual",
+  path: ["password"],
+})
+.refine((values) => {
+  return values.password !== values.newPassword
+}, {
+  message: "La contraseña actual y la nueva no pueden ser iguales",
+  path: ["newPassword"],
+});
 
 export const NewPasswordSchema = z.object({
   password: z.string().min(6, {
