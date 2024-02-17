@@ -22,7 +22,7 @@ export const LoginButton = ({children, mode = 'redirect', asChild} : LoginButton
           {children}
         </DialogTrigger>
         <DialogContent className="p-0 w-auto bg-transparent border-none">
-          
+          {/**Todo: content modal implement */}
         </DialogContent>
       </Dialog>
     )
