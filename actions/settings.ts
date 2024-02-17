@@ -48,7 +48,12 @@ export const settings = async (values: z.infer<typeof SettingsSchema>) => {
       verificationToken.token,
     )
 
-    return {success: 'Verification email sent!' };
+    await db.user.update({
+      where: {email: user.email as string},
+      data: {email: values.email}
+    })
+
+    return {success: "Email Cambiado con Exito!. Normalmente recibirias un correo para verificar el correo y validarlo, pero actualmente no puedo enviarte correos mas que a mi mismo por falta de dominio propio. Asi que te lo valido por defecto!." };
   }
 
   

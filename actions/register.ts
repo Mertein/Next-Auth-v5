@@ -33,10 +33,10 @@ export const register= async (values: z.infer<typeof RegisterSchema>, callbackUr
   const verificationToken = await generateVerificationToken(email);
   await sendVerificationEmail(email, verificationToken.token);
 
-  return {success: "Correo de verificación enviado!"};
+  await db.user.update({
+    where: {email},
+    data: {emailVerified: new Date}
+  })
 
-
-  
-  return {success: "Usuario Registrado!"};
-
+  return {success: "Registro completado!!. Normalmente recibirias un correo para verificar el correo y validarlo, pero actualmente no puedo enviarte correos mas que a mi mismo por falta de dominio propio. Asi que te lo valido por defecto, ya podes iniciar sesion!"};
 }

@@ -18,10 +18,10 @@ export default function Home() {
           "text-6xl font-semibold text-white drop-shadow-md",
           font.className,
         )}>
-          🚗 Flota de Autos
+           🔐 Next Auth
         </h1>
         <p className="text-white text-lg">
-          Bienvenido a la flota de autos, aquí podrás encontrar toda la información sobre los autos disponibles.
+          Titulo de Ejemplo: Bienvenido a NextAuth, aquí podrás ver todas las funcionalidades de Next Auth.
         </p>
         <div>
           <LoginButton asChild >

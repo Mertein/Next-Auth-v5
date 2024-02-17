@@ -27,7 +27,7 @@ export const login = async (values: z.infer<typeof LoginSchema>, callbackUrl?: s
   if(!existingUser.emailVerified) {
     const verificationToken = await generateVerificationToken(email);
     await sendVerificationEmail(email, verificationToken.token);
-    return {success: 'Email de verificación enviado!'}
+    return {success: "Normalmente recibirias un correo para validar el correo si no esta validado. Lamentablemente actualmente no puedo enviarte correos mas que a mi mismo por falta de dominio propio.!"};
   }
   
 
