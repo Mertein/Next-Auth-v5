@@ -30,7 +30,7 @@ const NewVerificationForm = () => {
         setError('Algo salió mal');
       })
 
-  }, [token]);
+  }, [token, success, error]);
 
   useEffect(() => {
     onSubmit();
