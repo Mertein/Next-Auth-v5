@@ -3,22 +3,13 @@ import * as z from "zod";
 
 
 export const SettingsSchema = z.object({
-  name: z.string().min(1, {
-    message: 'El nombre es requerido',
-  }),
-  email: z.string().email({
-    message: 'El correo es requerido',
-  }),
-  password: z.string().min(6, {
-    message: 'Se requiere una contraseña de al menos 6 caracteres',
-  }),
-  newPassword: z.string().min(6, {
-    message: 'Se requiere una contraseña de al menos 6 caracteres',
-  }),
-  role: z.optional(z.enum([UserRole.USER, UserRole.ADMIN])),
+  name: z.optional(z.string()),
+  email: z.optional(z.string().email()),
+  password: z.optional(z.string().min(6)),
+  newPassword: z.optional(z.string().min(6)),
+  role: z.enum([UserRole.USER, UserRole.ADMIN]),
 })
 .refine((values) => {
-  
   if(values.password && !values.newPassword ) {
     return false;
   }
@@ -38,7 +29,10 @@ export const SettingsSchema = z.object({
   path: ["password"],
 })
 .refine((values) => {
-  return values.password !== values.newPassword
+  if (values.password && values.newPassword && values.password === values.newPassword) {
+    return false;
+  }
+  return true;
 }, {
   message: "La contraseña actual y la nueva no pueden ser iguales",
   path: ["newPassword"],
