@@ -8,11 +8,11 @@ interface LoginButtonProps {
   asChild?: boolean;
 };
 
-export const LoginButton = ({children, mode = 'redirect', asChild} : LoginButtonProps) => {
+export const LoginButton = ({children, mode = "redirect", asChild} : LoginButtonProps) => {
   const router = useRouter();
 
   const onClick = () => {
-    router.push('/auth/login');
+    router.push("/auth/login");
   };
 
   if(mode === "modal") {
@@ -22,7 +22,9 @@ export const LoginButton = ({children, mode = 'redirect', asChild} : LoginButton
           {children}
         </DialogTrigger>
         <DialogContent className="p-0 w-auto bg-transparent border-none">
+          <div>
           {/**Todo: content modal implement */}
+          </div>
         </DialogContent>
       </Dialog>
     )
